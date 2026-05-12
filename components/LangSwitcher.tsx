@@ -2,13 +2,12 @@
 
 import { useLocale } from 'next-intl'
 import { useRouter, usePathname } from '@/i18n/navigation'
-import { useTransition } from 'react'
-import { HugeiconsIcon } from '@hugeicons/react'
-import { TranslateIcon } from '@hugeicons/core-free-icons'
+import { useTransition, useState } from 'react'
+import ReactCountryFlag from 'react-country-flag'
 
 const LANGS = {
-  en: { flag: '🇺🇸', code: 'EN' },
-  id: { flag: '🇮🇩', code: 'ID' },
+  en: { countryCode: 'US', code: 'EN' },
+  id: { countryCode: 'ID', code: 'ID' },
 }
 
 export default function LangSwitcher() {
@@ -16,42 +15,63 @@ export default function LangSwitcher() {
   const router = useRouter()
   const pathname = usePathname()
   const [isPending, startTransition] = useTransition()
-
-  const active = LANGS[locale]
-  const inactive = LANGS[locale === 'en' ? 'id' : 'en']
+  const [flipped, setFlipped] = useState(locale === 'id')
 
   const toggle = () => {
+    if (isPending) return
+    setFlipped((f) => !f)
     const next = locale === 'en' ? 'id' : 'en'
-    const doSwitch = () => startTransition(() => router.replace(pathname, { locale: next }))
-
-    if (typeof document !== 'undefined' && 'startViewTransition' in document) {
-      document.startViewTransition(doSwitch)
-    } else {
-      doSwitch()
-    }
+    startTransition(() => router.replace(pathname, { locale: next }))
   }
 
   return (
-    <button
+    <div
       onClick={toggle}
-      disabled={isPending}
+      role="button"
       aria-label="Toggle language"
-      className="hover-wobbly ml-5 flex -rotate-1 cursor-pointer items-center gap-2 rounded-xl border-[3px] border-on-background bg-surface/90 py-1.5 pr-2 pl-3 shadow-[6px_6px_0px_0px_rgba(29,28,23,1)] backdrop-blur-sm transition-transform hover:rotate-0 disabled:opacity-60"
+      aria-pressed={flipped}
+      className="hover-wobbly ml-5 h-14 w-14 -rotate-1 cursor-pointer transition-transform hover:rotate-0"
+      style={{ perspective: '600px' }}
     >
-      <HugeiconsIcon icon={TranslateIcon} size={16} className="shrink-0 text-on-surface-variant" />
+      <div
+        className="relative h-full w-full transition-transform duration-500 ease-in-out"
+        style={{
+          transformStyle: 'preserve-3d',
+          transform: flipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
+        }}
+      >
+        {/* Front — EN */}
+        <div
+          className="absolute inset-0 flex flex-col items-center justify-center gap-1 rounded-xl border-[3px] border-on-background bg-surface/90 shadow-[6px_6px_0px_0px_rgba(29,28,23,1)] backdrop-blur-sm"
+          style={{ backfaceVisibility: 'hidden' }}
+        >
+          <ReactCountryFlag
+            countryCode={LANGS.en.countryCode}
+            svg
+            style={{ width: '1.75rem', height: '1.75rem', borderRadius: '4px' }}
+            title="English"
+          />
+          <span className="font-label-sm text-[10px] font-bold tracking-widest text-on-background">
+            {LANGS.en.code}
+          </span>
+        </div>
 
-      {/* Inactive language — muted hint */}
-      <span className="text-xs text-on-surface-variant opacity-60 select-none">
-        {inactive.flag}
-      </span>
-
-      <span className="text-xs text-on-surface-variant opacity-40 select-none">→</span>
-
-      {/* Active language — yellow badge */}
-      <span className="flex items-center gap-1 rounded-lg border-2 border-on-background bg-secondary-container px-2 py-0.5 font-label-sm font-bold text-on-background shadow-[2px_2px_0px_0px_rgba(29,28,23,1)] select-none">
-        {active.flag}
-        <span className="text-xs">{active.code}</span>
-      </span>
-    </button>
+        {/* Back — ID */}
+        <div
+          className="absolute inset-0 flex flex-col items-center justify-center gap-1 rounded-xl border-[3px] border-on-background bg-secondary-container shadow-[6px_6px_0px_0px_rgba(29,28,23,1)]"
+          style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
+        >
+          <ReactCountryFlag
+            countryCode={LANGS.id.countryCode}
+            svg
+            style={{ width: '1.75rem', height: '1.75rem', borderRadius: '4px' }}
+            title="Indonesia"
+          />
+          <span className="font-label-sm text-[10px] font-bold tracking-widest text-on-background">
+            {LANGS.id.code}
+          </span>
+        </div>
+      </div>
+    </div>
   )
 }

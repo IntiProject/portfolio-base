@@ -2,8 +2,6 @@
 
 import { useState, useEffect } from 'react'
 import { useTranslations } from 'next-intl'
-import { HugeiconsIcon } from '@hugeicons/react'
-import { Pdf02Icon } from '@hugeicons/core-free-icons'
 import LangSwitcher from '@/components/LangSwitcher'
 
 const SECTION_HREFS = ['#work', '#skills', '#about', '#game'] as const
@@ -70,15 +68,6 @@ export default function Navbar() {
           >
             <span className="material-symbols-outlined">{menuOpen ? 'close' : 'menu'}</span>
           </button>
-
-          <a
-            href="/resume.pdf"
-            target="_blank"
-            className="hover-wobbly transition-al ml-5 flex rotate-3 border-[3px] border-on-background bg-primary px-3 py-2 font-label-sm text-on-primary shadow-[4px_4px_0px_0px_rgba(29,28,23,1)]"
-          >
-            <HugeiconsIcon icon={Pdf02Icon} className="mr-2" />
-            CV
-          </a>
         </div>
 
         {/* Mobile dropdown */}
