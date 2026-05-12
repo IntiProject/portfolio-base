@@ -1,0 +1,168 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-on-tertiary-container: #f7fff1;
+  --color-secondary-container: #fdc003;
+  --color-surface-container-high: #ece8e0;
+  --color-surface-variant: #e7e2da;
+  --color-error: #ba1a1a;
+  --color-primary-fixed-dim: #cabeff;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-tint: #603de2;
+  --color-on-primary-fixed: #1c0062;
+  --color-outline: #797587;
+  --color-tertiary: #006b1b;
+  --color-on-primary: #ffffff;
+  --color-on-secondary-fixed-variant: #5b4300;
+  --color-surface-container-low: #f8f3eb;
+  --color-on-secondary-fixed: #261a00;
+  --color-outline-variant: #c9c4d8;
+  --color-surface: #fef9f1;
+  --color-on-secondary: #ffffff;
+  --color-on-surface-variant: #484555;
+  --color-primary: #5d39df;
+  --color-on-secondary-container: #6c5000;
+  --color-secondary-fixed-dim: #fabd00;
+  --color-on-surface: #1d1c17;
+  --color-primary-container: #7757f9;
+  --color-primary-fixed: #e6deff;
+  --color-secondary-fixed: #ffdf9e;
+  --color-surface-container: #f2ede5;
+  --color-tertiary-container: #1e862d;
+  --color-inverse-surface: #32302b;
+  --color-tertiary-fixed-dim: #78dc77;
+  --color-error-container: #ffdad6;
+  --color-on-primary-container: #fffbff;
+  --color-surface-dim: #ded9d2;
+  --color-on-error: #ffffff;
+  --color-on-tertiary-fixed: #002204;
+  --color-on-primary-fixed-variant: #4717ca;
+  --color-tertiary-fixed: #94f990;
+  --color-surface-container-highest: #e7e2da;
+  --color-on-tertiary: #ffffff;
+  --color-on-tertiary-fixed-variant: #005313;
+  --color-surface-bright: #fef9f1;
+  --color-inverse-on-surface: #f5f0e8;
+  --color-on-background: #1d1c17;
+  --color-on-error-container: #93000a;
+  --color-background: #fef9f1;
+  --color-secondary: #785900;
+  --color-inverse-primary: #cabeff;
+
+  /* Border radius */
+  --radius-DEFAULT: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-full: 9999px;
+
+  /* Fonts — values injected by next/font at runtime */
+  --font-headline-md: var(--font-epilogue);
+  --font-headline-lg: var(--font-epilogue);
+  --font-label-sm: var(--font-be-vietnam-pro);
+  --font-body-md: var(--font-plus-jakarta-sans);
+  --font-body-lg: var(--font-plus-jakarta-sans);
+
+  /* Animations */
+  --animate-float: float 4s ease-in-out infinite;
+  --animate-float-fast: float 2s ease-in-out infinite;
+  --animate-ticker: ticker 20s linear infinite;
+  --animate-spin-slow: spin-slow 8s linear infinite;
+}
+
+@keyframes float {
+  0%   { transform: translateY(0px) rotate(0deg); }
+  50%  { transform: translateY(-10px) rotate(2deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes wobbly-hover {
+  0%   { transform: scale(1) rotate(0deg); }
+  25%  { transform: scale(1.05) rotate(-2deg); }
+  50%  { transform: scale(1.02) rotate(1deg); }
+  75%  { transform: scale(1.06) rotate(-1deg); }
+  100% { transform: scale(1.05) rotate(0deg); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Utility classes */
+.wobbly-border {
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+}
+.wobbly-border-2 {
+  border-radius: 15px 225px 15px 255px/255px 15px 225px 15px;
+}
+.scribble-underline {
+  position: relative;
+  display: inline-block;
+}
+.scribble-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: -5px;
+  right: -5px;
+  height: 10px;
+  background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 10" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 5 Q 25 0 50 5 T 100 5" stroke="%235d39df" stroke-width="2" fill="none"/></svg>') no-repeat center/100% 100%;
+}
+.dymo-label {
+  position: relative;
+  background-color: #fef9f1;
+  border: 2px solid #1d1c17;
+  box-shadow: 4px 4px 0px 0px rgba(29, 28, 23, 1);
+  transform: rotate(-1deg);
+}
+.dymo-label::before,
+.dymo-label::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: repeating-linear-gradient(45deg, transparent, transparent 2px, #1d1c17 2px, #1d1c17 4px);
+}
+.dymo-label::before { left: -2px; }
+.dymo-label::after  { right: -2px; }
+
+.hover-wobbly:hover { animation: wobbly-hover 0.5s ease-in-out forwards; }
+
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image:
+    linear-gradient(to right, rgba(29, 28, 23, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(29, 28, 23, 0.05) 1px, transparent 1px);
+}
+
+.drawn-arrow {
+  width: 100px;
+  height: 100px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M10,10 Q50,90 90,50 L80,40 M90,50 L95,65" fill="none" stroke="%231d1c17" stroke-width="4" stroke-linecap="round"/></svg>') no-repeat center;
+  background-size: contain;
+}
+
+/* Material Symbols */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
