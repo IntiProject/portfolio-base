@@ -26,12 +26,16 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: 'Ristian - Full Stack Developer',
-  description: 'Crafting digital experiences with a blend of technical precision and creative chaos.',
+  description:
+    'Crafting digital experiences with a blend of technical precision and creative chaos.',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${epilogue.variable} ${beVietnamPro.variable} ${plusJakartaSans.variable}`}>
+    <html
+      lang="en"
+      className={`${epilogue.variable} ${beVietnamPro.variable} ${plusJakartaSans.variable}`}
+    >
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
@@ -40,7 +44,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="stylesheet"
         />
       </head>
-      <body className="bg-background bg-grid-pattern text-on-background min-h-screen flex flex-col overflow-x-hidden selection:bg-secondary-container selection:text-on-secondary-container">
+      <body className="bg-grid-pattern flex min-h-screen flex-col overflow-x-hidden bg-background text-on-background selection:bg-secondary-container selection:text-on-secondary-container">
         {children}
       </body>
     </html>

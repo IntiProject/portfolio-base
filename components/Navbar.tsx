@@ -14,14 +14,16 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
-    const sections = links.map(l => l.href.slice(1))
+    const sections = links.map((l) => l.href.slice(1))
     const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(e => { if (e.isIntersecting) setActive(e.target.id) })
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) setActive(e.target.id)
+        })
       },
       { rootMargin: '-40% 0px -55% 0px' }
     )
-    sections.forEach(id => {
+    sections.forEach((id) => {
       const el = document.getElementById(id)
       if (el) observer.observe(el)
     })
@@ -29,24 +31,26 @@ export default function Navbar() {
   }, [])
 
   return (
-    <nav className="sticky top-4 z-50 max-w-[86.4rem] mx-auto flex justify-between items-center px-6 py-3 bg-surface/90 backdrop-blur-sm rounded-xl border-[3px] border-on-background m-4 shadow-[6px_6px_0px_0px_rgba(29,28,23,1)] transform -rotate-1 hover:rotate-0 transition-transform">
+    <nav className="sticky top-4 z-50 m-4 mx-auto flex max-w-[86.4rem] -rotate-1 transform items-center justify-between rounded-xl border-[3px] border-on-background bg-surface/90 px-6 py-3 shadow-[6px_6px_0px_0px_rgba(29,28,23,1)] backdrop-blur-sm transition-transform hover:rotate-0">
       {/* Logo */}
-      <div className="text-2xl font-black text-on-background border-2 border-on-background px-3 py-1 rotate-[-4deg] font-[family-name:var(--font-headline-md)] italic bg-secondary-container hover-wobbly shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] cursor-pointer">
+      <div className="hover-wobbly rotate-[-4deg] cursor-pointer border-2 border-on-background bg-secondary-container px-3 py-1 font-(family-name:--font-headline-md) text-2xl font-black text-on-background italic shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
         Ristian
       </div>
 
       {/* Desktop links */}
-      <div className="hidden md:flex gap-6 items-center relative">
-        <span className="absolute -top-6 -left-8 text-primary material-symbols-outlined transform rotate-45 text-3xl">south_east</span>
+      <div className="relative hidden items-center gap-6 md:flex">
+        <span className="material-symbols-outlined absolute -top-6 -left-8 rotate-45 transform text-3xl text-primary">
+          south_east
+        </span>
         {links.map(({ label, href }) => (
           <a
             key={href}
             href={href}
-            className={`font-[family-name:var(--font-headline-md)] font-bold uppercase tracking-tight hover-wobbly transition-all
-              ${active === href.slice(1)
+            className={`hover-wobbly font-(family-name:--font-headline-md) font-bold tracking-tight uppercase transition-all ${
+              active === href.slice(1)
                 ? 'text-primary underline decoration-wavy decoration-2 underline-offset-4'
-                : 'text-on-surface-variant px-3 py-1'
-              }`}
+                : 'px-3 py-1 text-on-surface-variant'
+            }`}
           >
             {label}
           </a>
@@ -57,7 +61,7 @@ export default function Navbar() {
       <div className="flex items-center gap-3">
         {/* Mobile hamburger */}
         <button
-          className="md:hidden text-on-background"
+          className="text-on-background md:hidden"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
@@ -67,7 +71,7 @@ export default function Navbar() {
         <a
           href="/resume.pdf"
           target="_blank"
-          className="bg-primary text-on-primary font-[family-name:var(--font-label-sm)] px-6 py-2 border-[3px] border-on-background shadow-[4px_4px_0px_0px_rgba(29,28,23,1)] hover-wobbly transition-all rotate-3 block"
+          className="hover-wobbly block rotate-3 border-[3px] border-on-background bg-primary px-6 py-2 font-label-sm text-on-primary shadow-[4px_4px_0px_0px_rgba(29,28,23,1)] transition-all"
         >
           Resume
         </a>
@@ -75,13 +79,13 @@ export default function Navbar() {
 
       {/* Mobile dropdown */}
       {menuOpen && (
-        <div className="absolute top-full left-0 right-0 mt-2 bg-surface border-[3px] border-on-background rounded-xl shadow-[6px_6px_0px_0px_rgba(29,28,23,1)] p-4 flex flex-col gap-3 md:hidden">
+        <div className="absolute top-full right-0 left-0 mt-2 flex flex-col gap-3 rounded-xl border-[3px] border-on-background bg-surface p-4 shadow-[6px_6px_0px_0px_rgba(29,28,23,1)] md:hidden">
           {links.map(({ label, href }) => (
             <a
               key={href}
               href={href}
               onClick={() => setMenuOpen(false)}
-              className="font-[family-name:var(--font-headline-md)] font-bold uppercase tracking-tight text-on-background py-2 px-3 border-b border-outline-variant last:border-0"
+              className="border-b border-outline-variant px-3 py-2 font-(family-name:--font-headline-md) font-bold tracking-tight text-on-background uppercase last:border-0"
             >
               {label}
             </a>

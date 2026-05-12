@@ -36,23 +36,31 @@ const journey = [
 
 export default function WorkJourney() {
   return (
-    <section className="pt-32 relative" id="about">
-      <div className="absolute -top-10 right-1/4 z-0 opacity-50 pointer-events-none drawn-arrow rotate-180" />
+    <section className="relative pt-32" id="about">
+      <div className="drawn-arrow pointer-events-none absolute -top-10 right-1/4 z-0 rotate-180 opacity-50" />
 
-      <h2 className="font-(family-name:--font-headline-md) text-4xl text-on-background uppercase -rotate-2 bg-primary-fixed px-6 py-3 border-4 border-on-background shadow-[6px_6px_0px_0px_rgba(29,28,23,1)] inline-block mb-16 hover-wobbly">
+      <h2 className="hover-wobbly mb-16 inline-block -rotate-2 border-4 border-on-background bg-primary-fixed px-6 py-3 font-(family-name:--font-headline-md) text-4xl text-on-background uppercase shadow-[6px_6px_0px_0px_rgba(29,28,23,1)]">
         Work Journey
       </h2>
 
-      <div className="relative border-l-4 border-dashed border-on-background ml-4 md:ml-10 space-y-16 pl-8">
+      <div className="relative ml-4 space-y-16 border-l-4 border-dashed border-on-background pl-8 md:ml-10">
         {journey.map((item) => (
           <div key={item.company} className="relative">
-            <div className={`absolute -left-12 top-0 w-8 h-8 ${item.dotBg} border-4 border-on-background rounded-full hover-wobbly`} />
-            <div className={`${item.cardBg} border-4 border-on-background p-6 shadow-[8px_8px_0px_0px_rgba(29,28,23,1)] ${item.shape} transform ${item.rotate} hover:scale-[1.02] transition-transform`}>
-              <h3 className="font-(family-name:--font-headline-md) text-2xl font-bold">{item.company}</h3>
+            <div
+              className={`absolute top-0 -left-12 h-8 w-8 ${item.dotBg} hover-wobbly rounded-full border-4 border-on-background`}
+            />
+            <div
+              className={`${item.cardBg} border-4 border-on-background p-6 shadow-[8px_8px_0px_0px_rgba(29,28,23,1)] ${item.shape} transform ${item.rotate} transition-transform hover:scale-[1.02]`}
+            >
+              <h3 className="font-(family-name:--font-headline-md) text-2xl font-bold">
+                {item.company}
+              </h3>
               <p className={`font-label-sm ${item.roleColor} mb-2`}>
                 {item.role} | {item.period}
               </p>
-              <p className="font-(family-name:--font-body-md) text-on-surface-variant">{item.desc}</p>
+              <p className="font-(family-name:--font-body-md) text-on-surface-variant">
+                {item.desc}
+              </p>
             </div>
           </div>
         ))}
