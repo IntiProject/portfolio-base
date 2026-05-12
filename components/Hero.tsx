@@ -1,11 +1,18 @@
+'use client'
+
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
+
+const featureIcons = ['code', 'design_services', 'speed'] as const
+const featureKeys = ['featureCode', 'featureDesign', 'featureDelivery'] as const
 
 export default function Hero() {
+  const t = useTranslations('hero')
+
   return (
     <section className="relative flex h-[calc(100vh-6rem)] w-full flex-col items-center justify-center overflow-hidden">
-      {/* Main Yellow Container */}
       <div className="wobbly-border-2 relative z-10 mx-auto mt-20 flex w-full max-w-6xl flex-col items-center justify-between gap-6 rounded-4xl border-8 border-on-background bg-secondary-container p-6 shadow-[16px_16px_0px_0px_rgba(29,28,23,1)] md:flex-row md:p-10">
-        {/* Background text LEFT — anchored precisely to container top-left */}
+        {/* Background text LEFT */}
         <div className="pointer-events-none absolute top-[-9.7rem] left-0 z-0">
           <p className="font-(family-name:--font-headline-lg) leading-none uppercase">
             <span
@@ -23,7 +30,7 @@ export default function Hero() {
           </p>
         </div>
 
-        {/* Background text RIGHT — anchored precisely to container top-right */}
+        {/* Background text RIGHT */}
         <div className="pointer-events-none absolute top-[-8.8rem] right-0 z-0 text-right">
           <p className="font-(family-name:--font-headline-lg) leading-none uppercase">
             <span
@@ -44,20 +51,19 @@ export default function Hero() {
         {/* Left Content */}
         <div className="relative z-20 flex max-w-md flex-1 flex-col items-start gap-4">
           <div className="font-label-sm text-xs font-bold tracking-widest text-on-secondary-container uppercase opacity-80 mix-blend-color-burn">
-            AVAILABLE FOR WORK
+            {t('available')}
           </div>
           <h2 className="font-(family-name:--font-headline-md) text-4xl leading-tight font-black text-on-background md:text-5xl">
-            Where Code Meets Your Vision
+            {t('title')}
           </h2>
           <p className="max-w-sm font-(family-name:--font-body-lg) text-sm text-on-secondary-fixed-variant opacity-90 md:text-base">
-            Step into the future of web development today. Crafting digital experiences with
-            precision and creativity.
+            {t('subtitle')}
           </p>
           <a
             href="#work"
             className="hover-wobbly group mt-2 flex items-center gap-3 rounded-full border-4 border-on-background bg-primary px-6 py-3 font-label-sm font-bold text-on-primary shadow-[6px_6px_0px_0px_rgba(29,28,23,1)] transition-all"
           >
-            View Projects
+            {t('cta')}
             <span className="material-symbols-outlined rounded-full border-2 border-on-background bg-surface p-1 text-sm text-on-background transition-transform group-hover:translate-x-1">
               arrow_forward
             </span>
@@ -73,14 +79,14 @@ export default function Hero() {
             </div>
             <div className="flex items-start gap-1 font-label-sm text-xs leading-tight font-bold text-on-background">
               <span className="material-symbols-outlined text-sm text-primary">star</span>
-              Rated 5 Stars by
+              {t('ratingLine1')}
               <br />
-              Happy Clients
+              {t('ratingLine2')}
             </div>
           </div>
         </div>
 
-        {/* Center Character Image — extends above container top border */}
+        {/* Center Character Image */}
         <div className="pointer-events-none absolute bottom-0 left-[55%] z-30 w-85 -translate-x-1/2 md:w-131.75">
           <Image
             src="/images/hero-avatar.png"
@@ -93,32 +99,21 @@ export default function Hero() {
 
         {/* Right Content */}
         <div className="relative z-20 flex flex-1 flex-col items-end gap-6">
-          {/* Feature Icons */}
           <div className="flex gap-6 pt-4 text-center">
-            <div className="flex flex-col items-center gap-1">
-              <span className="material-symbols-outlined text-2xl text-on-background">code</span>
-              <span className="w-14 font-label-sm text-[10px] font-bold text-on-background uppercase mix-blend-color-burn">
-                CLEAN CODE
-              </span>
-            </div>
-            <div className="flex flex-col items-center gap-1">
-              <span className="material-symbols-outlined text-2xl text-on-background">
-                design_services
-              </span>
-              <span className="w-14 font-label-sm text-[10px] font-bold text-on-background uppercase mix-blend-color-burn">
-                UNIQUE DESIGNS
-              </span>
-            </div>
-            <div className="flex flex-col items-center gap-1">
-              <span className="material-symbols-outlined text-2xl text-on-background">speed</span>
-              <span className="w-14 font-label-sm text-[10px] font-bold text-on-background uppercase mix-blend-color-burn">
-                FAST DELIVERY
-              </span>
-            </div>
+            {featureIcons.map((icon, i) => (
+              <div key={icon} className="flex flex-col items-center gap-1">
+                <span className="material-symbols-outlined text-2xl text-on-background">
+                  {icon}
+                </span>
+                <span className="w-14 font-label-sm text-[10px] font-bold text-on-background uppercase mix-blend-color-burn">
+                  {t(featureKeys[i])}
+                </span>
+              </div>
+            ))}
           </div>
 
           <div className="font-label-sm text-xs font-bold opacity-80 mix-blend-color-burn">
-            Featured Stack
+            {t('featuredStack')}
           </div>
 
           {/* Featured Stack Card */}
@@ -135,11 +130,11 @@ export default function Hero() {
               Next.js Vanguard
             </h3>
             <p className="mb-3 text-center font-label-sm text-[10px] text-on-surface-variant">
-              Unmatched performance.
+              {t('stackDesc')}
             </p>
             <button className="hover-wobbly flex w-full items-center justify-center gap-2 rounded-full border-4 border-on-background bg-primary px-3 py-2 font-label-sm text-xs font-bold text-on-primary shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
               <span className="material-symbols-outlined text-sm">rocket_launch</span>
-              Ready
+              {t('stackCta')}
             </button>
           </div>
         </div>

@@ -1,20 +1,20 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { useTranslations } from 'next-intl'
+import LangSwitcher from '@/components/LangSwitcher'
 
-const links = [
-  { label: 'Work', href: '#work' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'About', href: '#about' },
-  { label: 'Mini-Game', href: '#game' },
-]
+const SECTION_HREFS = ['#work', '#skills', '#about', '#game'] as const
 
 export default function Navbar() {
+  const t = useTranslations('navbar')
+  const links_labels = t.raw('links') as string[]
+  const links = SECTION_HREFS.map((href, i) => ({ href, label: links_labels[i] }))
+
   const [active, setActive] = useState('')
   const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
-    const sections = links.map((l) => l.href.slice(1))
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
@@ -23,8 +23,8 @@ export default function Navbar() {
       },
       { rootMargin: '-40% 0px -55% 0px' }
     )
-    sections.forEach((id) => {
-      const el = document.getElementById(id)
+    SECTION_HREFS.forEach((href) => {
+      const el = document.getElementById(href.slice(1))
       if (el) observer.observe(el)
     })
     return () => observer.disconnect()
@@ -59,6 +59,8 @@ export default function Navbar() {
 
       {/* Right side */}
       <div className="flex items-center gap-3">
+        <LangSwitcher />
+
         {/* Mobile hamburger */}
         <button
           className="text-on-background md:hidden"
@@ -73,7 +75,7 @@ export default function Navbar() {
           target="_blank"
           className="hover-wobbly block rotate-3 border-[3px] border-on-background bg-primary px-6 py-2 font-label-sm text-on-primary shadow-[4px_4px_0px_0px_rgba(29,28,23,1)] transition-all"
         >
-          Resume
+          {t('resume')}
         </a>
       </div>
 

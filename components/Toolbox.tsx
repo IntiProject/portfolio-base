@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef, useState, useCallback } from 'react'
+import { useTranslations } from 'next-intl'
 
 type Sticker = {
   id: number
@@ -87,6 +88,7 @@ const INITIAL_STICKERS: Sticker[] = [
 ]
 
 export default function Toolbox() {
+  const t = useTranslations('toolbox')
   const [stickers, setStickers] = useState<Sticker[]>(INITIAL_STICKERS)
   const dragging = useRef<{ id: number; ox: number; oy: number } | null>(null)
   const boardRef = useRef<HTMLDivElement>(null)
@@ -130,7 +132,7 @@ export default function Toolbox() {
 
       <h2 className="relative mb-16 text-center font-(family-name:--font-headline-md) text-5xl text-on-background uppercase">
         <span className="scribble-underline hover-wobbly inline-block rotate-2 transform border-2 border-on-background bg-secondary-container px-4 py-1 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-          My Toolbox
+          {t('title')}
         </span>
         <span className="material-symbols-outlined absolute -top-6 right-1/4 rotate-12 text-4xl text-primary">
           handyman
@@ -142,7 +144,7 @@ export default function Toolbox() {
         style={{ minHeight: 320 }}
       >
         <p className="relative z-10 mx-auto mb-2 inline-block w-fit -rotate-1 border-2 border-on-background bg-surface px-4 py-1 text-center font-label-sm text-sm">
-          Drag the stickers around the workbench!
+          {t('hint')}
         </p>
 
         <div

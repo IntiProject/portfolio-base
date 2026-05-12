@@ -1,6 +1,10 @@
 import type { Metadata } from 'next'
 import { Be_Vietnam_Pro, Epilogue, Plus_Jakarta_Sans } from 'next/font/google'
-import './globals.css'
+import { NextIntlClientProvider, hasLocale } from 'next-intl'
+import { getMessages } from 'next-intl/server'
+import { notFound } from 'next/navigation'
+import { routing } from '@/i18n/routing'
+import '../globals.css'
 
 const epilogue = Epilogue({
   weight: ['700', '800', '900'],
@@ -30,10 +34,26 @@ export const metadata: Metadata = {
     'Crafting digital experiences with a blend of technical precision and creative chaos.',
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }))
+}
+
+export default async function LocaleLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode
+  params: Promise<{ locale: string }>
+}) {
+  const { locale } = await params
+
+  if (!hasLocale(routing.locales, locale)) notFound()
+
+  const messages = await getMessages()
+
   return (
     <html
-      lang="en"
+      lang={locale}
       className={`${epilogue.variable} ${beVietnamPro.variable} ${plusJakartaSans.variable}`}
     >
       <head>
@@ -45,7 +65,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="bg-grid-pattern flex min-h-screen flex-col overflow-x-hidden bg-background text-on-background selection:bg-secondary-container selection:text-on-secondary-container">
-        {children}
+        <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
       </body>
     </html>
   )

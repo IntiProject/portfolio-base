@@ -1,9 +1,10 @@
-const journey = [
+'use client'
+
+import { useTranslations } from 'next-intl'
+
+const journeyMeta = [
   {
-    company: 'PIPT Senopati',
-    role: 'Senior Developer',
-    period: '2021 - Present',
-    desc: 'Leading frontend architecture and dropping sick beats in code reviews.',
+    id: 1,
     dotBg: 'bg-secondary-container',
     cardBg: 'bg-surface',
     roleColor: 'text-primary',
@@ -11,10 +12,7 @@ const journey = [
     rotate: 'rotate-1',
   },
   {
-    company: 'JDS (Jabar Digital Service)',
-    role: 'Web Developer',
-    period: '2019 - 2021',
-    desc: "Built public service apps that didn't crash on day one. A major win.",
+    id: 2,
     dotBg: 'bg-primary',
     cardBg: 'bg-surface-bright',
     roleColor: 'text-tertiary',
@@ -22,10 +20,7 @@ const journey = [
     rotate: '-rotate-1',
   },
   {
-    company: 'Freelance Hustler',
-    role: 'Code Mercenary',
-    period: '2017 - 2019',
-    desc: 'Surviving on caffeine and client approvals. Learned how to center a div the hard way.',
+    id: 3,
     dotBg: 'bg-error',
     cardBg: 'bg-surface-container-lowest',
     roleColor: 'text-secondary',
@@ -35,17 +30,26 @@ const journey = [
 ]
 
 export default function WorkJourney() {
+  const t = useTranslations('workJourney')
+  const journeyTexts = t.raw('items') as {
+    company: string
+    role: string
+    period: string
+    desc: string
+  }[]
+  const journey = journeyMeta.map((meta, i) => ({ ...meta, ...journeyTexts[i] }))
+
   return (
     <section className="relative pt-32" id="about">
       <div className="drawn-arrow pointer-events-none absolute -top-10 right-1/4 z-0 rotate-180 opacity-50" />
 
       <h2 className="hover-wobbly mb-16 inline-block -rotate-2 border-4 border-on-background bg-primary-fixed px-6 py-3 font-(family-name:--font-headline-md) text-4xl text-on-background uppercase shadow-[6px_6px_0px_0px_rgba(29,28,23,1)]">
-        Work Journey
+        {t('title')}
       </h2>
 
       <div className="relative ml-4 space-y-16 border-l-4 border-dashed border-on-background pl-8 md:ml-10">
         {journey.map((item) => (
-          <div key={item.company} className="relative">
+          <div key={item.id} className="relative">
             <div
               className={`absolute top-0 -left-12 h-8 w-8 ${item.dotBg} hover-wobbly rounded-full border-4 border-on-background`}
             />

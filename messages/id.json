@@ -1,0 +1,114 @@
+{
+  "navbar": {
+    "links": ["Karya", "Keahlian", "Tentang", "Mini-Game"],
+    "resume": "Resume"
+  },
+  "ticker": {
+    "items": [
+      "⚡ BERKAFEIN & SIAP NGODING",
+      "🔥 MEMBANGUN KEAJAIBAN",
+      "🚀 BUKA UNTUK FREELANCE",
+      "👾 MEMBASMI BUG",
+      "🎨 SKETSA IDE"
+    ]
+  },
+  "hero": {
+    "available": "TERSEDIA UNTUK KERJA",
+    "title": "Di Mana Kode Bertemu Visimu",
+    "subtitle": "Masuki era baru pengembangan web hari ini. Menciptakan pengalaman digital dengan presisi dan kreativitas.",
+    "cta": "Lihat Proyek",
+    "ratingLine1": "Dinilai 5 Bintang oleh",
+    "ratingLine2": "Klien Bahagia",
+    "featuredStack": "Stack Unggulan",
+    "stackDesc": "Performa tak tertandingi.",
+    "stackCta": "Siap",
+    "featureCode": "KODE BERSIH",
+    "featureDesign": "DESAIN UNIK",
+    "featureDelivery": "PENGIRIMAN CEPAT"
+  },
+  "selectedWorks": {
+    "title": "Karya Pilihan",
+    "projects": [
+      {
+        "title": "Invite+",
+        "desc": "Platform pembuat undangan digital. Mempermudah pengelolaan acara."
+      },
+      {
+        "title": "Wargame Sesko TNI",
+        "desc": "Platform simulasi taktis. Manajemen state yang kompleks."
+      },
+      { "title": "Tokoports", "desc": "Solusi e-commerce kustom dengan pembayaran terintegrasi." }
+    ]
+  },
+  "gallery": {
+    "title": "Lebih Banyak Proyek",
+    "items": [
+      { "title": "Sistem POS", "sub": "Vue & Node.js" },
+      { "title": "Company Profile", "sub": "Tema WordPress" },
+      { "title": "API Inventori", "sub": "Laravel & PostgreSQL" }
+    ]
+  },
+  "workJourney": {
+    "title": "Perjalanan Karier",
+    "items": [
+      {
+        "company": "PIPT Senopati",
+        "role": "Senior Developer",
+        "period": "2021 - Sekarang",
+        "desc": "Memimpin arsitektur frontend dan memberikan masukan keren di code review."
+      },
+      {
+        "company": "JDS (Jabar Digital Service)",
+        "role": "Web Developer",
+        "period": "2019 - 2021",
+        "desc": "Membangun aplikasi layanan publik yang tidak crash di hari pertama. Pencapaian besar."
+      },
+      {
+        "company": "Freelance Hustler",
+        "role": "Code Mercenary",
+        "period": "2017 - 2019",
+        "desc": "Bertahan dengan kafein dan persetujuan klien. Belajar cara memusatkan div dengan cara yang susah."
+      }
+    ]
+  },
+  "education": {
+    "title": "Pendidikan / Catatan",
+    "degreeTitle": "S.Kom. Ilmu Komputer",
+    "degreeSchool": "Universitas Teknologi Keren",
+    "degreeNote": "Lulus dengan minor \"Copy-Paste dari StackOverflow\"",
+    "selfTitle": "Masterclass Autodidak",
+    "selfSchool": "Internet",
+    "selfNote": "Berjam-jam menonton tutorial YouTube dan membaca dokumentasi."
+  },
+  "about": {
+    "tag": "Filosofi",
+    "title": "Pikiran Tenang,",
+    "titleAccent": "Hati Lembut.",
+    "p1": "Saya mendekati pengembangan seperti memecahkan teka-teki kompleks — dengan kesabaran, logika, dan sedikit intuisi kreatif. Saya percaya perangkat lunak yang hebat bukan hanya soal kode bersih, melainkan tentang manusia yang menggunakannya.",
+    "p2": "Ketika tidak sedang mengurai kode spaghetti, Anda bisa menemukan saya mengeksplorasi tech stack baru atau mencoret-coret ide di kertas sungguhan."
+  },
+  "toolbox": {
+    "title": "Kotak Alat Saya",
+    "hint": "Seret stiker di sekitar papan kerja!"
+  },
+  "game": {
+    "title": "☕ PENANGKAP KOPI",
+    "subtitle": "Tangkap kopi & bintang • Hindari bug • Gerak dengan Mouse atau Tombol Panah",
+    "readyTitle": "Siap Minum Kopi?",
+    "startBtn": "Mulai Game",
+    "controlHint": "Mouse untuk gerak · Tombol Panah juga bisa",
+    "gameOverTitle": "Game Over!",
+    "scoreLabel": "Skor:",
+    "bestLabel": "Terbaik:",
+    "playAgain": "Main Lagi",
+    "resetBtn": "Reset Game",
+    "cupLabel": "CANGKIR RISTIAN"
+  },
+  "footer": {
+    "tag": "Ayo Kolaborasi!",
+    "title": "Punya ide?",
+    "titleAccent": "Ayo bangun bersama.",
+    "cta": "Sapa Kami",
+    "copyright": "© Ristian — Dibangun dengan Coretan, Kopi, & Kekacauan"
+  }
+}

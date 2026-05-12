@@ -1,0 +1,114 @@
+{
+  "navbar": {
+    "links": ["Work", "Skills", "About", "Mini-Game"],
+    "resume": "Resume"
+  },
+  "ticker": {
+    "items": [
+      "⚡ CAFFEINATED & READY TO CODE",
+      "🔥 BUILDING MAGIC",
+      "🚀 OPEN FOR FREELANCE",
+      "👾 SQUASHING BUGS",
+      "🎨 SKETCHING IDEAS"
+    ]
+  },
+  "hero": {
+    "available": "AVAILABLE FOR WORK",
+    "title": "Where Code Meets Your Vision",
+    "subtitle": "Step into the future of web development today. Crafting digital experiences with precision and creativity.",
+    "cta": "View Projects",
+    "ratingLine1": "Rated 5 Stars by",
+    "ratingLine2": "Happy Clients",
+    "featuredStack": "Featured Stack",
+    "stackDesc": "Unmatched performance.",
+    "stackCta": "Ready",
+    "featureCode": "CLEAN CODE",
+    "featureDesign": "UNIQUE DESIGNS",
+    "featureDelivery": "FAST DELIVERY"
+  },
+  "selectedWorks": {
+    "title": "Selected Works",
+    "projects": [
+      {
+        "title": "Invite+",
+        "desc": "Digital invitation creator platform. Making events easier to manage."
+      },
+      {
+        "title": "Wargame Sesko TNI",
+        "desc": "Tactical simulation platform. Complex state management."
+      },
+      { "title": "Tokoports", "desc": "Custom e-commerce solution with integrated payments." }
+    ]
+  },
+  "gallery": {
+    "title": "More Doodles & Projects",
+    "items": [
+      { "title": "POS System", "sub": "Vue & Node.js" },
+      { "title": "Company Profile", "sub": "WordPress Theme" },
+      { "title": "Inventory API", "sub": "Laravel & PostgreSQL" }
+    ]
+  },
+  "workJourney": {
+    "title": "Work Journey",
+    "items": [
+      {
+        "company": "PIPT Senopati",
+        "role": "Senior Developer",
+        "period": "2021 - Present",
+        "desc": "Leading frontend architecture and dropping sick beats in code reviews."
+      },
+      {
+        "company": "JDS (Jabar Digital Service)",
+        "role": "Web Developer",
+        "period": "2019 - 2021",
+        "desc": "Built public service apps that didn't crash on day one. A major win."
+      },
+      {
+        "company": "Freelance Hustler",
+        "role": "Code Mercenary",
+        "period": "2017 - 2019",
+        "desc": "Surviving on caffeine and client approvals. Learned how to center a div the hard way."
+      }
+    ]
+  },
+  "education": {
+    "title": "Education / Scrapbook",
+    "degreeTitle": "B.Sc. Computer Science",
+    "degreeSchool": "University of Awesome Tech",
+    "degreeNote": "Graduated with a minor in \"StackOverflow Copypasting\"",
+    "selfTitle": "Self-Taught Masterclass",
+    "selfSchool": "The Internet",
+    "selfNote": "Countless hours of YouTube tutorials and documentation."
+  },
+  "about": {
+    "tag": "The Philosophy",
+    "title": "Steady Mind,",
+    "titleAccent": "Soft Heart.",
+    "p1": "I approach development like solving a complex puzzle—with patience, logic, and a bit of creative intuition. I believe great software isn't just about clean code; it's about the humans who use it.",
+    "p2": "When I'm not untangling spaghetti code, you'll find me exploring new tech stacks or probably sketching out ideas on actual paper."
+  },
+  "toolbox": {
+    "title": "My Toolbox",
+    "hint": "Drag the stickers around the workbench!"
+  },
+  "game": {
+    "title": "☕ COFFEE CATCHER",
+    "subtitle": "Catch coffee & stars • Avoid bugs • Move with Mouse or Arrow Keys",
+    "readyTitle": "Ready to Caffeinate?",
+    "startBtn": "Start Game",
+    "controlHint": "Mouse to move · Arrow Keys also work",
+    "gameOverTitle": "Game Over!",
+    "scoreLabel": "Score:",
+    "bestLabel": "Best:",
+    "playAgain": "Play Again",
+    "resetBtn": "Reset Game",
+    "cupLabel": "RISTIAN'S CUP"
+  },
+  "footer": {
+    "tag": "Let's Collab!",
+    "title": "Have an idea?",
+    "titleAccent": "Let's build it.",
+    "cta": "Say Hello",
+    "copyright": "© Ristian — Built with Scribbles, Coffee, & Chaos"
+  }
+}

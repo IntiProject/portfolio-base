@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState, useCallback } from 'react'
+import { useTranslations } from 'next-intl'
 
 type FallingItem = {
   id: number
@@ -26,6 +27,7 @@ const CATCHER_W = 96
 const CATCHER_H = 80
 
 export default function CoffeeCatcher() {
+  const t = useTranslations('game')
   const nextIdRef = useRef(0)
   const [started, setStarted] = useState(false)
   const [gameOver, setGameOver] = useState(false)
@@ -178,11 +180,9 @@ export default function CoffeeCatcher() {
     <section className="relative pt-20 pb-10" id="game">
       <div className="wobbly-border-2 relative overflow-hidden border-4 border-on-background bg-secondary-fixed p-8 shadow-[12px_12px_0px_0px_rgba(29,28,23,1)]">
         <h2 className="mb-2 font-(family-name:--font-headline-lg) text-3xl text-on-background uppercase">
-          ☕ COFFEE CATCHER
+          {t('title')}
         </h2>
-        <p className="mb-6 font-(family-name:--font-body-md) font-bold">
-          Catch coffee &amp; stars • Avoid bugs • Move with Mouse or Arrow Keys
-        </p>
+        <p className="mb-6 font-(family-name:--font-body-md) font-bold">{t('subtitle')}</p>
 
         <div
           ref={areaRef}
@@ -196,7 +196,7 @@ export default function CoffeeCatcher() {
             <div className="absolute inset-0 z-50 flex items-center justify-center bg-surface/80 backdrop-blur-sm">
               <div className="wobbly-border-2 -rotate-2 border-4 border-on-background bg-secondary-container p-6 text-center shadow-[8px_8px_0px_0px_rgba(29,28,23,1)]">
                 <h3 className="mb-2 font-(family-name:--font-headline-md) text-2xl">
-                  Ready to Caffeinate?
+                  {t('readyTitle')}
                 </h3>
                 <p className="mb-4 font-label-sm text-sm">
                   ☕ +5 &nbsp;|&nbsp; ⭐ +15 &nbsp;|&nbsp; 🍵 +25 &nbsp;|&nbsp; 🐛 -10
@@ -205,11 +205,9 @@ export default function CoffeeCatcher() {
                   onClick={() => setStarted(true)}
                   className="hover-wobbly border-2 border-on-background bg-primary px-6 py-2 font-bold tracking-wider text-on-primary uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
                 >
-                  Start Game
+                  {t('startBtn')}
                 </button>
-                <p className="mt-3 font-label-sm text-xs opacity-70">
-                  Mouse to move · Arrow Keys also work
-                </p>
+                <p className="mt-3 font-label-sm text-xs opacity-70">{t('controlHint')}</p>
               </div>
             </div>
           )}
@@ -218,13 +216,13 @@ export default function CoffeeCatcher() {
             <div className="absolute inset-0 z-50 flex items-center justify-center bg-error/20 backdrop-blur-sm">
               <div className="wobbly-border rotate-1 border-4 border-on-background bg-surface p-6 text-center shadow-[8px_8px_0px_0px_rgba(29,28,23,1)]">
                 <h3 className="mb-2 font-(family-name:--font-headline-md) text-2xl text-error">
-                  Game Over!
+                  {t('gameOverTitle')}
                 </h3>
                 <p className="mb-1 font-(family-name:--font-body-md)">
-                  Score: <strong>{score}</strong>
+                  {t('scoreLabel')} <strong>{score}</strong>
                 </p>
                 <p className="mb-4 font-(family-name:--font-body-md)">
-                  Best: <strong>{highScore}</strong>
+                  {t('bestLabel')} <strong>{highScore}</strong>
                 </p>
                 <button
                   onClick={() => {
@@ -233,7 +231,7 @@ export default function CoffeeCatcher() {
                   }}
                   className="hover-wobbly border-2 border-on-background bg-primary px-6 py-2 font-bold text-on-primary uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
                 >
-                  Play Again
+                  {t('playAgain')}
                 </button>
               </div>
             </div>
@@ -276,7 +274,7 @@ export default function CoffeeCatcher() {
                 </span>
               </div>
               <div className="absolute -top-8 -right-6 rotate-12 border-2 border-on-background bg-primary px-2 py-1 text-[10px] font-bold whitespace-nowrap text-on-primary shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-                RISTIAN&apos;S CUP
+                {t('cupLabel')}
               </div>
             </div>
           </div>
@@ -295,17 +293,18 @@ export default function CoffeeCatcher() {
         <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
           <div className="flex gap-4">
             <span className="rounded border-2 border-on-background bg-surface px-4 py-2 font-label-sm shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-              Score: <span className="text-lg font-black text-primary">{score}</span>
+              {t('scoreLabel')} <span className="text-lg font-black text-primary">{score}</span>
             </span>
             <span className="rounded border-2 border-surface bg-on-background px-4 py-2 font-label-sm text-surface shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-              Best: <span className="text-lg font-black text-secondary-container">{highScore}</span>
+              {t('bestLabel')}{' '}
+              <span className="text-lg font-black text-secondary-container">{highScore}</span>
             </span>
           </div>
           <button
             onClick={resetGame}
             className="hover-wobbly border-2 border-on-background bg-error px-6 py-2 font-label-sm font-bold tracking-tighter text-on-error uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
           >
-            Reset Game
+            {t('resetBtn')}
           </button>
         </div>
       </div>

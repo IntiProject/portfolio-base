@@ -1,9 +1,11 @@
-import Image from 'next/image'
+'use client'
 
-const projects = [
+import Image from 'next/image'
+import { useTranslations } from 'next-intl'
+
+const projectMeta = [
   {
-    title: 'Invite+',
-    desc: 'Digital invitation creator platform. Making events easier to manage.',
+    id: 1,
     tags: ['Laravel', 'Vue.js'],
     badge: 'SaaS',
     badgeClass: 'bg-primary text-on-primary rotate-3',
@@ -14,8 +16,7 @@ const projects = [
     emoji: null,
   },
   {
-    title: 'Wargame Sesko TNI',
-    desc: 'Tactical simulation platform. Complex state management.',
+    id: 2,
     tags: ['React', 'Node.js'],
     badge: null,
     badgeClass: '',
@@ -26,8 +27,7 @@ const projects = [
     emoji: '🔥',
   },
   {
-    title: 'Tokoports',
-    desc: 'Custom e-commerce solution with integrated payments.',
+    id: 3,
     tags: ['Next.js', 'Tailwind'],
     badge: 'E-Commerce',
     badgeClass: 'bg-secondary-container text-on-secondary-container -rotate-3',
@@ -40,6 +40,10 @@ const projects = [
 ]
 
 export default function SelectedWorks() {
+  const t = useTranslations('selectedWorks')
+  const projectTexts = t.raw('projects') as { title: string; desc: string }[]
+  const projects = projectMeta.map((meta, i) => ({ ...meta, ...projectTexts[i] }))
+
   return (
     <section className="relative pt-10" id="work">
       <div className="material-symbols-outlined pointer-events-none absolute top-20 -right-10 rotate-12 text-7xl text-outline-variant opacity-10">
@@ -51,7 +55,7 @@ export default function SelectedWorks() {
           brush
         </div>
         <h2 className="hover-wobbly z-10 inline-block -rotate-3 border-4 border-on-background bg-secondary-container px-6 py-3 font-(family-name:--font-headline-md) text-4xl text-on-background uppercase shadow-[6px_6px_0px_0px_rgba(29,28,23,1)]">
-          Selected Works
+          {t('title')}
         </h2>
         <div className="mt-2 grow border-t-4 border-dashed border-on-background" />
       </div>
@@ -59,7 +63,7 @@ export default function SelectedWorks() {
       <div className="relative z-10 mt-4 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((p) => (
           <div
-            key={p.title}
+            key={p.id}
             className={`group hover-wobbly overflow-hidden border-4 border-on-background p-5 transition-all duration-300 ${p.wrapClass}`}
           >
             {p.emoji && (
