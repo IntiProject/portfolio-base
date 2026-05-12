@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import { useTranslations } from 'next-intl'
+import { HugeiconsIcon } from '@hugeicons/react'
+import { Pdf02Icon } from '@hugeicons/core-free-icons'
 import LangSwitcher from '@/components/LangSwitcher'
 
 const SECTION_HREFS = ['#work', '#skills', '#about', '#game'] as const
@@ -31,69 +33,71 @@ export default function Navbar() {
   }, [])
 
   return (
-    <nav className="sticky top-4 z-50 m-4 mx-auto flex max-w-[86.4rem] -rotate-1 transform items-center justify-between rounded-xl border-[3px] border-on-background bg-surface/90 px-6 py-3 shadow-[6px_6px_0px_0px_rgba(29,28,23,1)] backdrop-blur-sm transition-transform hover:rotate-0">
-      {/* Logo */}
-      <div className="hover-wobbly rotate-[-4deg] cursor-pointer border-2 border-on-background bg-secondary-container px-3 py-1 font-(family-name:--font-headline-md) text-2xl font-black text-on-background italic shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-        Ristian
-      </div>
+    <div className="sticky top-4 z-50 m-4 mx-auto flex items-center">
+      <nav className="flex max-w-[86.4rem] -rotate-1 transform items-center justify-between rounded-xl border-[3px] border-on-background bg-surface/90 px-6 py-3 shadow-[6px_6px_0px_0px_rgba(29,28,23,1)] backdrop-blur-sm transition-transform hover:rotate-0">
+        {/* Logo */}
+        <div className="hover-wobbly mr-4 rotate-[-4deg] cursor-pointer border-2 border-on-background bg-secondary-container px-3 py-1 font-(family-name:--font-headline-md) text-2xl font-black text-on-background italic shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+          Ristian
+        </div>
 
-      {/* Desktop links */}
-      <div className="relative hidden items-center gap-6 md:flex">
-        <span className="material-symbols-outlined absolute -top-6 -left-8 rotate-45 transform text-3xl text-primary">
-          south_east
-        </span>
-        {links.map(({ label, href }) => (
-          <a
-            key={href}
-            href={href}
-            className={`hover-wobbly font-(family-name:--font-headline-md) font-bold tracking-tight uppercase transition-all ${
-              active === href.slice(1)
-                ? 'text-primary underline decoration-wavy decoration-2 underline-offset-4'
-                : 'px-3 py-1 text-on-surface-variant'
-            }`}
-          >
-            {label}
-          </a>
-        ))}
-      </div>
-
-      {/* Right side */}
-      <div className="flex items-center gap-3">
-        <LangSwitcher />
-
-        {/* Mobile hamburger */}
-        <button
-          className="text-on-background md:hidden"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-        >
-          <span className="material-symbols-outlined">{menuOpen ? 'close' : 'menu'}</span>
-        </button>
-
-        <a
-          href="/resume.pdf"
-          target="_blank"
-          className="hover-wobbly block rotate-3 border-[3px] border-on-background bg-primary px-6 py-2 font-label-sm text-on-primary shadow-[4px_4px_0px_0px_rgba(29,28,23,1)] transition-all"
-        >
-          {t('resume')}
-        </a>
-      </div>
-
-      {/* Mobile dropdown */}
-      {menuOpen && (
-        <div className="absolute top-full right-0 left-0 mt-2 flex flex-col gap-3 rounded-xl border-[3px] border-on-background bg-surface p-4 shadow-[6px_6px_0px_0px_rgba(29,28,23,1)] md:hidden">
+        {/* Desktop links */}
+        <div className="relative hidden items-center gap-6 md:flex">
+          <span className="material-symbols-outlined absolute -top-6 -left-8 rotate-45 transform text-3xl text-primary">
+            south_east
+          </span>
           {links.map(({ label, href }) => (
             <a
               key={href}
               href={href}
-              onClick={() => setMenuOpen(false)}
-              className="border-b border-outline-variant px-3 py-2 font-(family-name:--font-headline-md) font-bold tracking-tight text-on-background uppercase last:border-0"
+              className={`hover-wobbly font-(family-name:--font-headline-md) font-bold tracking-tight uppercase transition-all ${
+                active === href.slice(1)
+                  ? 'text-primary underline decoration-wavy decoration-2 underline-offset-4'
+                  : 'px-3 py-1 text-on-surface-variant'
+              }`}
             >
               {label}
             </a>
           ))}
         </div>
-      )}
-    </nav>
+
+        {/* Right side */}
+        <div className="flex items-center gap-3">
+          {/* Mobile hamburger */}
+          <button
+            className="text-on-background md:hidden"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+          >
+            <span className="material-symbols-outlined">{menuOpen ? 'close' : 'menu'}</span>
+          </button>
+
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            className="hover-wobbly transition-al ml-5 flex rotate-3 border-[3px] border-on-background bg-primary px-3 py-2 font-label-sm text-on-primary shadow-[4px_4px_0px_0px_rgba(29,28,23,1)]"
+          >
+            <HugeiconsIcon icon={Pdf02Icon} className="mr-2" />
+            CV
+          </a>
+        </div>
+
+        {/* Mobile dropdown */}
+        {menuOpen && (
+          <div className="absolute top-full right-0 left-0 mt-2 flex flex-col gap-3 rounded-xl border-[3px] border-on-background bg-surface p-4 shadow-[6px_6px_0px_0px_rgba(29,28,23,1)] md:hidden">
+            {links.map(({ label, href }) => (
+              <a
+                key={href}
+                href={href}
+                onClick={() => setMenuOpen(false)}
+                className="border-b border-outline-variant px-3 py-2 font-(family-name:--font-headline-md) font-bold tracking-tight text-on-background uppercase last:border-0"
+              >
+                {label}
+              </a>
+            ))}
+          </div>
+        )}
+      </nav>
+      <LangSwitcher />
+    </div>
   )
 }

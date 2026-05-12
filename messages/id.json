@@ -1,7 +1,6 @@
 {
   "navbar": {
-    "links": ["Karya", "Keahlian", "Tentang", "Mini-Game"],
-    "resume": "Resume"
+    "links": ["Karya", "Keahlian", "Tentang", "Mini-Game"]
   },
   "ticker": {
     "items": [

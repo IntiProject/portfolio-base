@@ -1,7 +1,6 @@
 {
   "navbar": {
-    "links": ["Work", "Skills", "About", "Mini-Game"],
-    "resume": "Resume"
+    "links": ["Work", "Skills", "About", "Mini-Game"]
   },
   "ticker": {
     "items": [
