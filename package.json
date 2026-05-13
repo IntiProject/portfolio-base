@@ -13,6 +13,7 @@
     "typecheck": "tsc --noEmit",
     "prepare": "node -e \"process.env.CI || require('child_process').execSync('husky', {stdio: 'inherit'})\""
   },
+  "packageManager": "npm@11.12.1",
   "keywords": [],
   "author": "Ristian",
   "license": "ISC",
