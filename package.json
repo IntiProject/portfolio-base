@@ -33,7 +33,7 @@
     "*.{css,json,md}": "prettier --write"
   },
   "optionalDependencies": {
-    "@parcel/watcher-linux-x64-glibc": "*"
+    "@parcel/watcher-linux-x64-glibc": "2.5.6"
   },
   "devDependencies": {
     "@types/node": "^22.15.0",
